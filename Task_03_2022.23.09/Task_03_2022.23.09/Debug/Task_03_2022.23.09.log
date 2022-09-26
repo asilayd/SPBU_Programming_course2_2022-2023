@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\user\source\repos\SPBU_Programming_course2_2022-2023\Task_03_2022.23.09\Task_03_2022.23.09\Source.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Task_03_2022.23.09.vcxproj -> C:\Users\user\source\repos\SPBU_Programming_course2_2022-2023\Task_03_2022.23.09\Debug\Task_03_2022.23.09.exe
