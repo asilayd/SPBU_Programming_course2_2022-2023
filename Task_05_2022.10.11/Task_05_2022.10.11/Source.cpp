@@ -110,6 +110,7 @@ int main()
 {
 	
 	Vector<int> vc(10);
+	Vector<int> vc1(3);
 	for (int i = 0; i < 14; ++i)
 	{
 		vc.Add(i);
@@ -117,9 +118,10 @@ int main()
 		
 	}
 	cout << vc << endl;
+	vc1 = vc;
 	for (int i = 0; i < 14; ++i)
 	{
-		cout << vc[i] << endl;
+		cout << vc1[i] << endl;
 
 
 	}
