@@ -1,2 +1,9 @@
 ﻿  Source.cpp
-  task_02_2022.20.19.09.vcxproj -> C:\Users\user\source\repos\SPBU_Programming_course2_2022-2023\Task_02_2022.19.09\Debug\task_02_2022.20.19.09.exe
+C:\spbu\SPBU_Programming_course2_2022-2023\Task_02_2022.19.09\task_02_2022.20.19.09\Source.cpp(98,23): warning C4018: '<': signed/unsigned mismatch
+C:\spbu\SPBU_Programming_course2_2022-2023\Task_02_2022.19.09\task_02_2022.20.19.09\Source.cpp(145): message : see reference to function template instantiation 'void indexsort<T>(T *,size_t,int (__cdecl *)(T,T))' being compiled
+          with
+          [
+              T=int
+          ]
+C:\spbu\SPBU_Programming_course2_2022-2023\Task_02_2022.19.09\task_02_2022.20.19.09\Source.cpp(111,24): warning C4018: '<': signed/unsigned mismatch
+  task_02_2022.20.19.09.vcxproj -> C:\spbu\SPBU_Programming_course2_2022-2023\Task_02_2022.19.09\Debug\task_02_2022.20.19.09.exe

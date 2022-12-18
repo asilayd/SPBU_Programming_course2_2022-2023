@@ -1,16 +1,5 @@
-
-T:1 no arg result: 10
+T:1 arg1:3result: 10
 T:1 no arg no result
-T:1 no arg result: rrrr
-T:1 arg1:2 arg2:3 result: 5
-T:1 no arg no result
-T:1 no arg result: 10
-T:1 no arg no result
-T:1 no arg result: rrrr
-T:1 arg1:2 arg2:3 result: 5
-T:1 no arg no result
-T:1 no arg result: 10
-T:1 no arg no result
-T:1 no arg result: rrrr
+T:1 arg1:rresult: rrrr
 T:1 arg1:2 arg2:3 result: 5
 T:1 no arg no result

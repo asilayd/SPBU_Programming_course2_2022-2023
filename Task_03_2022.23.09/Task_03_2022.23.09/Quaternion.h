@@ -4,10 +4,9 @@
 
 class Quaternion
 {
-private:
-	double a, b, c, d;
 
 public:
+	double a, b, c, d;
 	Quaternion(double a = 0, double b = 0, double c = 0, double d = 0);
 	Quaternion(const Quaternion& num);
 	~Quaternion();
@@ -35,14 +34,25 @@ public:
 	Quaternion operator+(const Quaternion& number);
 	Quaternion operator-(const Quaternion& number);
 	Quaternion operator*(const Quaternion& number);
-	
+
 	friend Quaternion operator*(const double k, const Quaternion& number);
 	friend Quaternion operator+(const double k, const Quaternion& number);
 	friend Quaternion operator-(const double k, const Quaternion& number);
-	friend Quaternion operator/(const double k, Quaternion& number);
-	
-	Quaternion operator/(Quaternion& number);
+	friend Quaternion operator/(const double k, const Quaternion& number);
+
+	Quaternion operator/(const Quaternion& num);
 	Quaternion operator/(double c);
 
+	Quaternion& operator+=(const Quaternion& q);
+	Quaternion& operator+=(const double summ);
+	Quaternion& operator*=(const Quaternion& q);
+	Quaternion& operator*=(const double k);
+	Quaternion& operator-=(const Quaternion& q);
+	Quaternion& operator-=(const double summ);
+	Quaternion& operator/=(const Quaternion& q);
+	Quaternion& operator/=(const double div);
+
+	friend std::ostream& operator<<(std::ostream& stream, const Quaternion& q);
+	//friend std::istream& operator>>(std::istream& stream, const Quaternion& q);
 
 };

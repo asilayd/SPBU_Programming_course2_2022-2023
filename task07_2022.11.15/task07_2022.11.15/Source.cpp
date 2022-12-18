@@ -75,21 +75,25 @@ public:
 		cout << endl;
 	}
 
-	T operator[](int p)
+	T& operator[](int p)
 	{
 		return this->data[p];
 	}
 	void operator=(const Vector& vc)
 	{
-		this->capacity = vc.capacity;
-		this->count = vc.count;
-		delete[] this->data;
-		T* newdata = new T[capacity];
-		for (int i = 0; i < count; ++i)
-		{
-			newdata[i] = vc.data[i];
+		if (this->data == vc.data)
+		{ }
+		else {
+			this->capacity = vc.capacity;
+			this->count = vc.count;
+			delete[] this->data;
+			T* newdata = new T[capacity];
+			for (int i = 0; i < count; ++i)
+			{
+				newdata[i] = vc.data[i];
+			}
+			this->data = newdata;
 		}
-		this->data = newdata;
 	}
 	friend ostream& operator<<(ostream& stream, const Vector& vc)
 	{

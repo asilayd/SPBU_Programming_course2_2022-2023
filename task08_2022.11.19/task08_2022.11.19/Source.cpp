@@ -30,7 +30,7 @@ public:
 		t += 1;
 		ofstream rec;
 		rec.open("log.txt", ios::app);
-		rec << "T:" << t << " " << "no arg " << "result: " << functor(x) << endl;
+		rec << "T:" << t << " " << "arg1:" << x << "result: " << functor(x) << endl;
 		rec.close();
 
 

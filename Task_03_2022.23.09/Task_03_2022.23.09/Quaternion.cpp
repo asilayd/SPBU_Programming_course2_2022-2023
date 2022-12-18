@@ -17,7 +17,7 @@ Quaternion::~Quaternion()
 
 double Quaternion::getA()
 {
-	return this->a;
+	return this->a ;
 }
 double Quaternion::getB()
 {
@@ -52,9 +52,9 @@ void Quaternion::setD(double d)
 void Quaternion::print()
 {
 	cout << this->a << " ";
-	(this->b > 0) ? cout << "+ " << this->b << "*i" : cout << " " << this->b << "*i ";
-	(this->c > 0) ? cout << "+ " << this->c << "*i" : cout << " " << this->c << "*i ";
-	(this->d > 0) ? cout << "+ " << this->d << "*i" : cout << " " << this->d << "*i";
+	(this->b >= 0) ? cout << "+ " << this->b << "*i" : cout << " " << this->b << "*i ";
+	(this->c >= 0) ? cout << "+ " << this->c << "*i" : cout << " " << this->c << "*i ";
+	(this->d >= 0) ? cout << "+ " << this->d << "*i" : cout << " " << this->d << "*i";
 }
 
 double Quaternion::norm()
@@ -101,8 +101,9 @@ Quaternion Quaternion::operator*(const Quaternion& number)
 		a*number.d + number.a*d + b*number.c - number.b*c);
 }
 
-Quaternion Quaternion::operator/(Quaternion& number)
+Quaternion Quaternion::operator/(const Quaternion& num)
 {
+	Quaternion number = num;
 	return (*this * number.conjugate()/(number.norm() * number.norm()));
 }
 
@@ -139,3 +140,93 @@ Quaternion operator/(const double k, Quaternion& number)
 {
 	return k * (number.conjugate()/(number.norm()* number.norm()));
 }
+
+Quaternion& Quaternion::operator+=(const Quaternion& q)
+{
+	this->a += q.a;
+	this->b += q.b;
+	this->c += q.c;
+	this->d += q.d;
+	return *this;
+}
+
+Quaternion& Quaternion::operator+=(const double summ)
+{
+	Quaternion t;
+	t.a = summ;
+	*this += t;
+	return *this;
+}
+
+Quaternion& Quaternion::operator*=(const Quaternion& q)
+{
+	double re, i, j, k;
+	re = this->a;
+	i = this->b;
+	j = this->c;
+	k = this->d;
+	this->a = re * q.a - i * q.b - j * q.c - k * q.d;
+	this->b = re * q.b + q.a * i + j * q.d - k * q.c;
+	this->c = re * q.c - i * q.d + j * q.a + k * q.b;
+	this->d = re * q.d + i * q.c - j * q.b + k * q.a;
+	return *this;
+}
+
+Quaternion& Quaternion::operator*=(const double k)
+{
+	Quaternion t;
+	t.a = k;
+	*this *= t;
+	return *this;
+}
+
+Quaternion& Quaternion::operator-=(const Quaternion& q)
+{
+	this->a -= q.a;
+	this->b -= q.b;
+	this->c -= q.c;
+	this->d -= q.d;
+	return *this;
+}
+
+Quaternion& Quaternion::operator-=(const double summ)
+{
+	Quaternion t;
+	t.a = summ;
+	*this -= t;
+	return *this;
+}
+
+Quaternion& Quaternion::operator/=(const Quaternion& q)
+{
+	Quaternion t = q;
+	(*this *= t.conjugate()) /= (t.norm() * t.norm());
+	return *this;
+
+}
+
+Quaternion& Quaternion::operator/=(const double div)
+{
+	this->a /= div;
+	this->b /= div;
+	this->c /= div;
+	this->d /= div;
+	return *this;
+}
+
+
+
+std::ostream& operator<<(std::ostream& stream,  const Quaternion& q)
+{
+	if (q.a != 0) stream << q.a;
+	if (q.b != 0) stream << (q.b > 0 ? "+" : "") << q.b << "*i";
+	if (q.c != 0) stream << (q.c > 0 ? "+" : "") << q.c << "*j";
+	if (q.d != 0) stream << (q.d > 0 ? "+" : "") << q.d << "*k";
+	return stream;
+}
+/*
+std::istream& operator>>(std::istream& stream, const Quaternion& q)
+{
+	stream >> q.a >> ' ' >> q.b >> ' ' >> q.c >> ' ' >> q.d;
+	return stream;
+}*/
